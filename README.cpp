@@ -29,7 +29,7 @@ int main()
             
          cout<< leadNum ;
          
-          if (leadNum + m < taNum) // To check if 'leadNum' is the last one
+          if (leadNum + m < taNum) // To check if 'leadNum' is the last one leadNum
           
            {
                cout << ','  ; 

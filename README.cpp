@@ -1,46 +1,43 @@
-# problem2test
-#include <iostream>
-using namespace std ;
 
-int main()
-{
-    int n = 0 ;
-    int m = 0 ;
-    cin >> n >> m ;    //read two integers from PDOGS
-   
-    if(n < m){        // To check if n > m 
-       cout << -1  ;
-    }
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main(){
+    int S = 0, s = 0, co = 0, cu =0, I =0, n = 0;
+    int num[100] = {0};
+    int iEnd = 0 , iBeg= 0;
+    int reserveCost = {0};
+    int unavaCost = {0};
+    int unaDay = 0;
+
+    cin >> S >> s >> co >> cu >> I >> n;
+    iBeg = I;
     
-    if(n >= m){           // To check if n > m     
+    for(int i = 0; i < n; i++){
+        cin >>num[i];}
 
-        int leader = 1 ;               
-// The leading student number of first group
+    for(int i = 0; i < n; i++){
+        iEnd = iBeg - num[i];
 
-        int taNum= n / m ;       
- // The number of students that goes to the teacher's team
-
-        int num = taNum * m ;
-        
-        while(leader <= num){
-            cout << leader ;        
-            if(leader + m < num){       // To check if 'leadNum' is the last one leadNum
-                cout << ','  ; 
+        if(iBeg - num[i] > s ){
+            reserveCost += co * iEnd;
+            iBeg = iEnd;
+        }
+        else{
+            if (iEnd == s || iEnd > 0){
+                reserveCost += co * iEnd;
+                iBeg = S;
             }
-            leader = leader + m  ; 
-// add the number of each groups to the leadNum
+            else{
+            unavaCost += abs(iEnd) *cu;
+            iBeg = S;
+            unaDay = unaDay +1;
+            }
         }
     }
+        cout << unaDay << "," << reserveCost + unavaCost ;
 
-   
-    return 0 ;  // indicate that the program ended successfully
-    
-}
-         
-         leadNum= leadNum + m  ; // add the number of each groups to the leadNum
-
-        }
-     }
-   
-    return 0 ;  // indicate that the program ended successfully
-}
+        return 0;
+    }
+        

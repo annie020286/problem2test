@@ -1,43 +1,50 @@
-
 #include<iostream>
-#include<cmath>
 using namespace std;
 
-int main(){
-    int S = 0, s = 0, co = 0, cu =0, I =0, n = 0;
-    int num[100] = {0};
-    int iEnd = 0 , iBeg= 0;
-    int reserveCost = {0};
-    int unavaCost = {0};
-    int unaDay = 0;
+const int MAX_NODE_CNT = 2000;
 
-    cin >> S >> s >> co >> cu >> I >> n;
-    iBeg = I;
-    
-    for(int i = 0; i < n; i++){
-        cin >>num[i];}
+void check(int n,  int edges[][MAX_NODE_CNT]){
+    int count = 0 ;
 
     for(int i = 0; i < n; i++){
-        iEnd = iBeg - num[i];
+        int sum = 0;
 
-        if(iBeg - num[i] > s ){
-            reserveCost += co * iEnd;
-            iBeg = iEnd;
-        }
+        for(int j = 0; j < n; j++){
+            sum += edges[i][j];
+          // cout << edges[i][j]; //check line
+    }
+        if(i <n )
+        cout << sum << ",";
         else{
-            if (iEnd == s || iEnd > 0){
-                reserveCost += co * iEnd;
-                iBeg = S;
-            }
-            else{
-            unavaCost += abs(iEnd) *cu;
-            iBeg = S;
-            unaDay = unaDay +1;
-            }
+            cout << sum << ";";
+        }
+        if(sum %2 != 0)
+            count +=1;
+    if(count >=4)
+        cout << 1;
+        else
+            cout << 0;
+}
+
+}
+    
+
+int main(){
+    int n = 0;
+    int edges[][MAX_NODE_CNT] = {0};
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+        
+            cin >> edges[i][j];
+            cout << edges[i][j];
+            check(n, edges);
         }
     }
-        cout << unaDay << "," << reserveCost + unavaCost ;
 
-        return 0;
-    }
-        
+        return 0 ;
+
+        }
+
+
+
